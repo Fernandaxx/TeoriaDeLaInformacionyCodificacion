@@ -3,22 +3,13 @@ from itertools import combinations
 
 
 def calcular_sindromes(R: np.ndarray, H: np.ndarray) -> np.ndarray:
-    """
-    Calcula:
-        S = R H.T mod 2
-    """
+  
     S = (R @ H.T) % 2
     return S.astype(np.uint8)
 
 
 def generar_tabla_sindromes(H: np.ndarray, t: int) -> dict:
-    """
-    Genera una tabla:
-        síndrome -> patrón de error
 
-    Para d_min = 3, t = 1.
-    Entonces corrige errores de un solo bit.
-    """
     n = H.shape[1]
     tabla = {}
 
@@ -34,10 +25,7 @@ def generar_tabla_sindromes(H: np.ndarray, t: int) -> dict:
 
 
 def corregir_por_sindrome(R: np.ndarray, H: np.ndarray, d_min: int):
-    """
-    Modo corrector:
-    si el síndrome coincide con un patrón corregible, se corrige la palabra.
-    """
+
     S = calcular_sindromes(R, H)
 
     t = (d_min - 1) // 2
@@ -67,10 +55,7 @@ def corregir_por_sindrome(R: np.ndarray, H: np.ndarray, d_min: int):
 
 
 def detectar_por_sindrome(R: np.ndarray, H: np.ndarray):
-    """
-    Modo detector:
-    las palabras con síndrome no nulo se descartan.
-    """
+
     S = calcular_sindromes(R, H)
 
     sindrome_cero = np.all(S == 0, axis=1)

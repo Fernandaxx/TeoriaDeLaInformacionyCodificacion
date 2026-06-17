@@ -34,7 +34,6 @@ def canal_awgn_bpsk(
 
     r = s + ruido
 
-    # Detección dura
     R = (r.real > 0).astype(np.uint8)
 
     return R, r, N0

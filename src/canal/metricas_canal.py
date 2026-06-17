@@ -6,15 +6,7 @@ def calcular_metricas(
     U_e: np.ndarray,
     filas_aceptadas: np.ndarray
 ) -> dict:
-    """
-    Calcula tasa de error de palabra y tasa de error de bit.
 
-    En corrector:
-        filas_aceptadas son todas True.
-
-    En detector:
-        filas_aceptadas indica qué filas no fueron descartadas.
-    """
     U_ref = U[filas_aceptadas]
 
     total_palabras = U_ref.shape[0]

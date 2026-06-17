@@ -73,9 +73,7 @@ def simular_curva(
     A: float,
     modo: str,
 ) -> list:
-    """
-    Simula todos los puntos de la curva.
-    """
+
     G = generar_matriz_generadora(k, n)
     H = generar_matriz_verificadora_de_paridad(G)
     d_min = calcular_dmin(G)

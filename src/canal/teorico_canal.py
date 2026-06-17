@@ -4,29 +4,18 @@ from math import comb
 
 
 def Q(x):
-    """
-    Función Q usando erfc.
-    """
+
     return 0.5 * erfc(x / np.sqrt(2))
 
 
 def peb_teorica_sin_codigo(EbfN0_db):
-    """
-    BER teórica de BPSK sin codificación.
-    """
+
     EbfN0 = 10 ** (EbfN0_db / 10)
     return Q(np.sqrt(2 * EbfN0))
 
 
 def p_error_canal_codificado(EbfN0_db, k: int, n: int):
-    """
-    Probabilidad de error en el canal para el sistema codificado.
 
-    El eje es Ebf/N0, energía por bit de fuente.
-    Como se transmite redundancia:
-        R = k/n
-        Ebc/N0 = R * Ebf/N0
-    """
     R = k / n
     EbfN0 = 10 ** (EbfN0_db / 10)
 
@@ -34,11 +23,7 @@ def p_error_canal_codificado(EbfN0_db, k: int, n: int):
 
 
 def pep_teorica_corrector(EbfN0_db, n: int, k: int, t: int):
-    """
-    Probabilidad teórica aproximada de error de palabra para corrector.
 
-    Falla si aparecen t+1 o más errores en una palabra de largo n.
-    """
     p = p_error_canal_codificado(EbfN0_db, k, n)
 
     Pep = 0.0
@@ -49,10 +34,7 @@ def pep_teorica_corrector(EbfN0_db, n: int, k: int, t: int):
 
 
 def enumerar_pesos_codigo(G):
-    """
-    Enumera los pesos de todas las palabras de código.
-    Sirve para estimar probabilidad de error no detectado en modo detector.
-    """
+
     k, n = G.shape
 
     pesos = np.zeros(n + 1, dtype=int)
@@ -96,3 +78,10 @@ def prob_detector_teorica(EbfN0_db, G, k: int, n: int):
         "P_descartadas_teo": p_descartadas,
         "P_error_no_detectado_teo": p_error_no_detectado,
     }
+
+
+
+
+
+
+
