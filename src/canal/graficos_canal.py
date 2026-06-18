@@ -90,7 +90,7 @@ def graficar_resultados_canal(
             plt.semilogy(
                 EbfN0_db_vector,
                 P_desc_teo,
-                "g--",
+                "b--",
                 label="P descartadas teórica"
             )
 

@@ -4,12 +4,7 @@ import matplotlib.pyplot as plt
 
 
 def cargar_imagen_binaria(ruta_imagen: str, umbral: int = 127):
-    """
-    Lee una imagen TIFF, la pasa a escala de grises y luego a bits 0/1.
 
-    Negro  -> 0
-    Blanco -> 1
-    """
     imagen = Image.open(ruta_imagen).convert("L")
     matriz_gris = np.array(imagen, dtype=np.uint8)
 
@@ -20,9 +15,7 @@ def cargar_imagen_binaria(ruta_imagen: str, umbral: int = 127):
 
 
 def guardar_imagen_binaria(bits: np.ndarray, shape_original, ruta_salida: str):
-    """
-    Reconstruye una imagen binaria a partir de un vector de bits.
-    """
+ 
     matriz = bits.reshape(shape_original)
     imagen_uint8 = (matriz * 255).astype(np.uint8)
 
@@ -37,9 +30,7 @@ def guardar_comparacion_imagenes(
     ruta_salida: str,
     titulo: str
 ):
-    """
-    Guarda y muestra una comparación entre la imagen original y la recuperada.
-    """
+
 
     plt.figure(figsize=(8, 4))
 

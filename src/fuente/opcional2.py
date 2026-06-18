@@ -18,10 +18,7 @@ from canal.sindromes import corregir_por_sindrome
 
 
 def preparar_prefijos(codigos: dict):
-    """
-    Arma el conjunto de prefijos válidos del código Huffman.
-    Sirve para detectar cuándo un error de canal rompe la sincronización.
-    """
+
     prefijos = set()
 
     for codigo in codigos.values():
@@ -36,13 +33,7 @@ def decodificar_huffman_con_limite(
     codigos: dict,
     cantidad_simbolos_esperada: int
 ):
-    """
-    Decodifica Huffman, pero se detiene cuando recupera la cantidad esperada
-    de símbolos.
-
-    Si queda algún error de canal, Huffman puede desincronizarse porque es
-    un código de longitud variable. Por eso registramos errores de prefijo.
-    """
+ 
     decodificador = preparar_decodificador_huffman(codigos)
     prefijos = preparar_prefijos(codigos)
 
@@ -68,13 +59,7 @@ def decodificar_huffman_con_limite(
 
 
 def transmitir_bits_por_canal(bits_tx: np.ndarray, ebn0_db: float):
-    """
-    Transmite una secuencia de bits usando el código de canal (14,10).
-
-    Flujo:
-        bits_tx -> bloques de K -> codificación canal -> AWGN/BPSK
-        -> corrección por síndrome -> bits_rx
-    """
+  
     G = generar_matriz_generadora(K, N)
     H = generar_matriz_verificadora_de_paridad(G)
     d_min = calcular_dmin(G)
@@ -129,11 +114,7 @@ def ejecutar_opcional_2(
     carpeta_imagenes: str = "src/resultados/imagenes",
     carpeta_figuras: str = "src/resultados/figuras",
 ):
-    """
-    Ejecuta el opcional 2 completo:
-
-        imagen -> Huffman -> canal codificado -> Huffman inverso -> imagen reconstruida
-    """
+  
 
     os.makedirs(carpeta_tablas, exist_ok=True)
     os.makedirs(carpeta_imagenes, exist_ok=True)
@@ -258,10 +239,7 @@ def ejecutar_opcional_2_ordenes_2_y_3(
     ruta_imagen: str,
     ebn0_db: float = 7.0
 ):
-    """
-    Ejecuta el opcional 2 para orden 2 y orden 3.
-    """
-
+  
     resultado_orden2 = ejecutar_opcional_2(
         ruta_imagen=ruta_imagen,
         orden=2,

@@ -18,9 +18,7 @@ from fuente.opcional2 import ejecutar_opcional_2_ordenes_2_y_3
 
 
 def guardar_csv(resultados: list, ruta_salida: str):
-    """
-    Guarda una lista de diccionarios como archivo CSV.
-    """
+
     if len(resultados) == 0:
         return
 
@@ -189,7 +187,7 @@ def main():
     print("=" * 100)
 
     print()
-    print("Archivos generados para el informe:")
+    print("Archivos generados:")
     print("- src/resultados/tablas/canal_corrector.csv")
     print("- src/resultados/tablas/canal_detector.csv")
     print("- src/resultados/tablas/huffman_orden2.csv")

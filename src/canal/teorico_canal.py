@@ -49,15 +49,6 @@ def enumerar_pesos_codigo(G):
 
 
 def prob_detector_teorica(EbfN0_db, G, k: int, n: int):
-    """
-    Probabilidades teóricas para modo detector.
-
-    P_error_no_detectado:
-        probabilidad de que el patrón de error sea una palabra de código no nula.
-
-    P_descartadas:
-        probabilidad de que el síndrome sea no nulo.
-    """
     p = p_error_canal_codificado(EbfN0_db, k, n)
 
     pesos = enumerar_pesos_codigo(G)

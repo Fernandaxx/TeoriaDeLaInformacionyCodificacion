@@ -21,12 +21,7 @@ def ejecutar_huffman_para_orden(
     orden: int,
     carpeta_tablas: str = "src/resultados/tablas"
 ):
-    """
-    Ejecuta todo el proceso Huffman para un orden dado.
-
-    Flujo:
-        imagen -> bits -> bloques -> símbolos -> Huffman -> bits comprimidos
-    """
+   
     os.makedirs(carpeta_tablas, exist_ok=True)
 
     imagen_binaria, bits_imagen = cargar_imagen_binaria(ruta_imagen)
@@ -100,9 +95,7 @@ def ejecutar_huffman_ordenes_2_y_3(
     ruta_imagen: str,
     carpeta_tablas: str = "src/resultados/tablas"
 ):
-    """
-    Ejecuta Huffman para orden 2 y orden 3.
-    """
+   
     resultado_orden2 = ejecutar_huffman_para_orden(
         ruta_imagen=ruta_imagen,
         orden=2,

@@ -15,12 +15,6 @@ class NodoHuffman:
 
 
 def calcular_frecuencias(simbolos: np.ndarray, orden: int):
-    """
-    Cuenta la frecuencia absoluta de cada símbolo posible.
-
-    Para orden 2 hay 2^2 = 4 símbolos.
-    Para orden 3 hay 2^3 = 8 símbolos.
-    """
     cantidad_simbolos_posibles = 2 ** orden
 
     frecuencias = np.bincount(
@@ -32,9 +26,7 @@ def calcular_frecuencias(simbolos: np.ndarray, orden: int):
 
 
 def calcular_probabilidades(frecuencias: np.ndarray):
-    """
-    Calcula frecuencia relativa de cada símbolo.
-    """
+
     total = np.sum(frecuencias)
 
     if total == 0:
@@ -44,11 +36,7 @@ def calcular_probabilidades(frecuencias: np.ndarray):
 
 
 def construir_arbol_huffman(frecuencias: np.ndarray):
-    """
-    Construye el árbol de Huffman usando una cola de prioridad.
 
-    heapq siempre extrae el nodo de menor frecuencia.
-    """
     heap = []
     contador = 0
 
@@ -87,11 +75,7 @@ def construir_arbol_huffman(frecuencias: np.ndarray):
 
 
 def generar_codigos_huffman(nodo: NodoHuffman, prefijo: str = ""):
-    """
-    Recorre el árbol y arma el diccionario:
 
-        símbolo decimal -> código Huffman
-    """
     if nodo.simbolo is not None:
         if prefijo == "":
             prefijo = "0"
@@ -111,11 +95,7 @@ def generar_codigos_huffman(nodo: NodoHuffman, prefijo: str = ""):
 
 
 def codificar_huffman(simbolos: np.ndarray, codigos: dict):
-    """
-    Codifica la secuencia de símbolos usando el diccionario Huffman.
 
-    Devuelve un vector de bits 0/1.
-    """
     cadena = "".join(codigos[int(s)] for s in simbolos)
 
     bits_codificados = np.fromiter(
@@ -127,11 +107,7 @@ def codificar_huffman(simbolos: np.ndarray, codigos: dict):
 
 
 def preparar_decodificador_huffman(codigos: dict):
-    """
-    Invierte el diccionario:
 
-        código Huffman -> símbolo
-    """
     decodificador = {}
 
     for simbolo, codigo in codigos.items():
@@ -141,11 +117,7 @@ def preparar_decodificador_huffman(codigos: dict):
 
 
 def decodificar_huffman(bits_codificados: np.ndarray, codigos: dict):
-    """
-    Decodifica una secuencia de bits Huffman.
-
-    Se usa más adelante para el opcional 2.
-    """
+ 
     decodificador = preparar_decodificador_huffman(codigos)
 
     buffer = ""

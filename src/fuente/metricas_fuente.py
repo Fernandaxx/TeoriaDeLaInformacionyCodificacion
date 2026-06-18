@@ -10,15 +10,7 @@ def calcular_metricas_huffman(
     orden: int,
     longitud_codificada: int
 ):
-    """
-    Calcula las métricas principales de Huffman:
 
-    - Probabilidades
-    - Largo promedio por símbolo extendido
-    - Largo promedio por bit de fuente
-    - Entropía
-    - Tasa de compresión
-    """
     total_simbolos = np.sum(frecuencias)
     probabilidades = frecuencias / total_simbolos
 
@@ -50,10 +42,7 @@ def calcular_metricas_huffman(
 
 
 def armar_tabla_huffman(frecuencias: np.ndarray, codigos: dict, orden: int):
-    """
-    Arma una tabla con:
-        símbolo, bloque binario, frecuencia, probabilidad, código Huffman y longitud.
-    """
+
     total = np.sum(frecuencias)
     filas = []
 
@@ -77,9 +66,7 @@ def armar_tabla_huffman(frecuencias: np.ndarray, codigos: dict, orden: int):
 
 
 def guardar_csv(filas: list, ruta_salida: str):
-    """
-    Guarda una lista de diccionarios como CSV.
-    """
+ 
     if len(filas) == 0:
         return
 
@@ -92,9 +79,7 @@ def guardar_csv(filas: list, ruta_salida: str):
 
 
 def imprimir_tabla_huffman(filas: list):
-    """
-    Imprime la tabla Huffman en consola.
-    """
+
     print()
     print("Tabla Huffman")
     print("-" * 80)
